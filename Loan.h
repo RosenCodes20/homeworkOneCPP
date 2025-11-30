@@ -58,4 +58,7 @@ class Loan {
             this->startDate = startDate;
         }
 
+        void setDueDate(std::string dueDate) {
+            this->dueDate = dueDate;
+        }
 };
