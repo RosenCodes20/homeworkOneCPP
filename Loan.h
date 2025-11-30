@@ -61,4 +61,10 @@ class Loan {
         void setDueDate(std::string dueDate) {
             this->dueDate = dueDate;
         }
+
+        void markReturned() {
+            this->returned = true;
+        }
+
+        
 };
