@@ -38,6 +38,10 @@ class Loan {
             return this->dueDate;
         }
 
+        bool getReturned() const {
+            return this->returned;
+        }
+
         void setIsbn(std::string isbn) {
             if (isbn.length() == 13) {
                 this->isbn = isbn;
@@ -74,6 +78,7 @@ class Loan {
             return "Loan isbn: " + this->isbn + "\n" +
                    "Loan member id: " + this->memberId + "\n" +
                    "Loan start date: " + this->startDate + "\n" +
-                   "Loan due date: " + this->dueDate;
+                   "Loan due date: " + this->dueDate + "\n" +
+                   "Is book returned: " + std::to_string(this->returned);
         }
 };

@@ -28,4 +28,18 @@ class Library {
 
             return false;
         }
+
+        bool isBookAvailable(const std::string& isbn) const {
+            for (Loan l: this->loans) {
+                if (l.getIsbn() == isbn && l.getReturned()) {
+                    return true;
+                } else if (l.getIsbn() == isbn && !l.getReturned()) {
+                    return false;
+                }
+            }
+
+            return "Not find book by this ibn";
+        }
+
+
 };
