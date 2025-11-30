@@ -66,5 +66,7 @@ class Loan {
             this->returned = true;
         }
 
-        
+        bool isOverdue(const std::string& today) const {
+            return !returned && today > dueDate;
+        }
 };
