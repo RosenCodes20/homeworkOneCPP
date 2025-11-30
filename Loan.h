@@ -69,4 +69,11 @@ class Loan {
         bool isOverdue(const std::string& today) const {
             return !returned && today > dueDate;
         }
+
+        std::string to_string() {
+            return "Loan isbn: " + this->isbn + "\n" +
+                   "Loan member id: " + this->memberId + "\n" +
+                   "Loan start date: " + this->startDate + "\n" +
+                   "Loan due date: " + this->dueDate;
+        }
 };
