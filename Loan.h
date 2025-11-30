@@ -39,7 +39,11 @@ class Loan {
         }
 
         void setIsbn(std::string isbn) {
-            
+            if (isbn.length() == 13) {
+                this->isbn = isbn;
+            } else {
+                throw std::invalid_argument("Not right entered isbn!");
+            }
         }
 
 };
