@@ -54,5 +54,8 @@ class Loan {
             }
         }
 
+        void setStartDate(std::string startDate) {
+            this->startDate = startDate;
+        }
 
 };
