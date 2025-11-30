@@ -28,4 +28,4 @@ class Library {
 
             return false;
         }
-}
+};
