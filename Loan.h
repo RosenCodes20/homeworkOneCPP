@@ -67,7 +67,7 @@ class Loan {
         }
 
         void markReturned() {
-            this->returned = true;
+            returned = true;
         }
 
         bool isOverdue(const std::string& today) const {

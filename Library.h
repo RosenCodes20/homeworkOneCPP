@@ -20,7 +20,7 @@ class Library {
         }
 
         bool hasBook(const std::string& isbn) const {
-            for (Book& b : this->books) {
+            for (const Book& b : this->books) {
                 if (b.getIsbn() == isbn) {
                     return true;
                 }
@@ -30,22 +30,19 @@ class Library {
         }
 
         bool isBookAvailable(const std::string& isbn) const {
-            for (Loan& l: this->loans) {
-                if (l.getIsbn() == isbn && l.getReturned()) {
-                    return true;
-                } else if (l.getIsbn() == isbn && !l.getReturned()) {
+            for (const Loan& l : loans) {
+                if (l.getIsbn() == isbn && !l.getReturned()) {
                     return false;
                 }
             }
-
-            return "Not find book by this ibn";
+            return true;  
         }
 
         bool loanBook(const std::string& isbn, const std::string& memberId, const std::string& start, const std::string& due) {
             if (!hasBook(isbn)) return false;
 
             bool memberExists = false;
-            for (Member& m : members) {
+            for (const Member& m : members) {
                 if (m.getMemberId() == memberId) {
                     memberExists = true;
                     break;
@@ -70,18 +67,21 @@ class Library {
             return false;
         }
 
-        vector<Book> findByAuthor(const string& authorName) const {
-            for (Book& b : this->books) {
+        std::vector<Book> findByAuthor(const std::string& authorName) const {
+            std::vector<Book> result;
+            for (const Book& b : this->books) {
                 if (b.getAuthor().getName() == authorName) {
-                    return b;
+                    result.push_back(b);
                 }
             }
+
+            return result;
         }
 
         std::string to_string() const {
         int activeLoans = 0;
-        for (Loan& loan : loans) {
-            if (!loan.isReturned()) activeLoans++;
+        for (const Loan& loan : loans) {
+            if (!loan.getReturned()) activeLoans++;
         }
 
         return "Library info:\n" +
