@@ -46,4 +46,13 @@ class Loan {
             }
         }
 
+        void setMemberId(std::string memberId) {
+            if (memberId.empty() || memberId.length() != 10) {
+                throw std::invalid_argument("Not entered id, or id length is not 10!");
+            } else {
+                this->memberId = memberId;
+            }
+        }
+
+
 };
