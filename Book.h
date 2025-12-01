@@ -124,7 +124,7 @@ class Book{
                    "Book year: " + std::to_string(this->year) + "\n" +
                    "Book price: " + std::to_string(this->price) + "\n" +
                    "Book isbn (length = 13 everytime): " + this->isbn + "\n" + 
-                   "Total Book counts " + std::to_string(this->totalBooks);
+                   "Total Book counts " + std::to_string(this->totalBooks) + "\n";
         }
 
 };
