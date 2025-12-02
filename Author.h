@@ -10,7 +10,10 @@ class Author {
     public:
         Author() : name("Unknown"), birthYear(1900) {}
 
-        Author(std::string name, int birthYear) : name(name), birthYear(birthYear) {}
+        Author(std::string name, int birthYear) : name(name), birthYear(birthYear) {
+            setName(name);
+            setBirthYear(birthYear);
+        }
 
         ~Author() = default;
 
