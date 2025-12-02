@@ -1,15 +1,9 @@
-# Проект: Библиотека (Library System)
+# Проект: Мини "Библиотечна система" (Library System)
 
 ## Описание
 
-Проектът „Библиотека“ представлява малка C++ система, която моделира работа с книги, автори и членове на библиотека чрез пет взаимосвързани класа — `Author`, `Book`, `Member`, `Loan` и `Library`.
-Той демонстрира прилагането на основни обектно-ориентирани концепции в C++:
-
-* конструктори и деструктори;
-* капсулация и достъп чрез getters и setters;
-* const-коректност и валидация на данни;
-* статични членове и методи;
-* добри ООП практики в реалистичен контекст.
+Проектът „Библиотечна система“ представлява малка C++ система, която моделира работа с книги, автори и членове на библиотека чрез пет взаимосвързани класа — `Author`, `Book`, `Member`, `Loan` и `Library`.
+Целта е демонстриране на добри обектно-ориентирани практики, включително Rule of 3/5, константни методи, статични членове и валидиране на данни.
 
 ## Структура на проекта
 
@@ -27,7 +21,7 @@ homeworkOne/
 
 ## Компилация и изпълнение
 
-Отворете терминал в директорията `library/` и изпълнете:
+Отворете терминал в директорията `homeworkLibrary/` и изпълнете:
 
 ```bash
 g++ -std=c++17 -Wall -Wextra -O2 main.cpp -o library
@@ -42,40 +36,40 @@ g++ -std=c++17 -Wall -Wextra -O2 main.cpp -o library
 ## Примерен изход
 
 ```
-Member name: Rosen Ivanov
-Member id: 1251121252
-Member year joined: 2018
+Member name: Petar Petrov
+Member id: M001
+Member year joined: 2023
 
 Has book?: 1
 
 Is book available: 1
 
-Is book loaned: 1
+Loan created.
 
-Is book loaned: 1
+Is book available: 0
 
-Is book returned: 1
-Found books: 2
-Title: Harry Potter
-Author name: J.K. Rowling
-Author birth year: 1965
-Book year: 1997
-Book price: 29.990000
-Book isbn: 9780545010221
-Total Book counts 13
+Book returned.
 
-Title: Harry Potter Updated
-Author name: J.K. Rowling
-Author birth year: 1965
-Book year: 1998
-Book price: 35.500000
-Book isbn: 9780545010221
-Total Book counts 13
+Is book available: 1
+
+Found books by author 'Ivan Vazov': 2
+Title: Pod igoto
+Author: Ivan Vazov (1850)
+Year: 1894
+Price: 25.5
+ISBN: ISBN-001
+
+Title: Nema zemya
+Author: Ivan Vazov (1850)
+Year: 1900
+Price: 18.9
+ISBN: ISBN-002
 
 Library info:
-Total books: 3
-Total members: 2
-Active loans: 1
+Total books: 2
+Total members: 1
+Active loans: 0
+Total Book counts: 2
 ```
 
 ## Класове
@@ -95,7 +89,7 @@ Active loans: 1
 * `Author(const std::string& name, int birthYear)` — конструктор с параметри
 * `setName()`, `getName()`
 * `setBirthYear()`, `getBirthYear()`
-* `toString()` — текстово представяне
+* `to_string() const`
 
 ### Book
 
@@ -103,36 +97,44 @@ Active loans: 1
 
 **Членове:**
 
-* `std::string isbn` — ISBN
 * `std::string title` — заглавие
 * `Author author` — автор
-* `int copies` — брой налични копия
+* `int year` — година
+* `double price` — цена
+* `std::string isbn` — ISBN
+* `static int totalBooks` — общ брой книги
 
 **Методи:**
 
 * `Book()`
-* `Book(const std::string& isbn, const std::string& title, const Author& author, int copies)`
-* `setTitle()`, `getTitle()`
-* `setCopies()`, `getCopies()`
-* `getAuthor()`
-* `toString()`
+* `Book(const std::string& title, const Author& author, int year, double price, const std::string& isbn)`
+* `Book(const Book&)`, `Book(Book&&)` — Rule of 5
+* `operator=`, `operator=(Book&&)`
+* `~Book()`
+* `setPrice()`, `getPrice()`
+* `setYear()`, `getYear()`
+* `getAuthor()`, `getTitle()`, `getISBN()`
+* `to_string() const`
+* `static int getTotalBooks()`
 
 ### Member
 
-Представлява член на библиотеката.
+Представлява читател.
 
 **Членове:**
 
-* `int id` — уникален идентификатор
 * `std::string name` — име
+* `std::string memberId` — уникален идентификатор
+* `int yearJoined` — година на присъединяване
 
 **Методи:**
 
 * `Member()`
-* `Member(int id, const std::string& name)`
+* `Member(const std::string& name, const std::string& memberId, int yearJoined)`
 * `setName()`, `getName()`
-* `getId()`
-* `toString()`
+* `setMemberId()`, `getMemberId()`
+* `setYearJoined()`, `getYearJoined()`
+* `to_string() const`
 
 ### Loan
 
@@ -140,19 +142,18 @@ Active loans: 1
 
 **Членове:**
 
-* `std::string isbn` — ISBN на книгата
-* `int memberId` — ID на члена
-* `std::string startDate` — начална дата
-* `std::string dueDate` — крайна дата
-* `bool returned` — дали е върната
+* `std::string isbn`
+* `std::string memberId`
+* `std::string startDate`
+* `std::string dueDate`
+* `bool returned`
 
 **Методи:**
 
-* `Loan()`
-* `Loan(const std::string& isbn, int memberId, const std::string& start, const std::string& due, bool returned=false)`
-* `setReturned()`
-* `isReturned()`
-* `toString()`
+* `Loan(const std::string& isbn, const std::string& memberId, const std::string& start, const std::string& due, bool returned=false)`
+* `markReturned()`
+* `isOverdue(const std::string& today) const`
+* `to_string() const`
 
 ### Library
 
@@ -166,22 +167,21 @@ Active loans: 1
 
 **Методи:**
 
-* `addBook()`
-* `addMember()`
-* `borrowBook()`
-* `returnBook()`
-* `listLoans()`
-* `listBooks()`
+* `addBook(const Book& b)`
+* `addMember(const Member& m)`
+* `hasBook(const std::string& isbn) const`
+* `isBookAvailable(const std::string& isbn) const`
+* `loanBook(const std::string& isbn, const std::string& memberId, const std::string& start, const std::string& due)`
+* `returnBook(const std::string& isbn, const std::string& memberId)`
+* `findByAuthor(const std::string& authorName) const`
+* `to_string() const`
 
 ## Образователни цели
 
-Проектът има за цел да демонстрира:
-
-* разделение между интерфейс (.h) и имплементация (.cpp);
-* използване на списъци за инициализация;
-* валидация и обработка на изключения;
-* работа със статични членове;
-* прилагане на const-коректност.
+* Демонстриране на капсулация и const-коректност.
+* Работа с конструктори, деструктори и статични членове.
+* Прилагане на Rule of 3/5.
+* Валидация на данни и поддържане на инварианти.
 
 ## Автор
 
