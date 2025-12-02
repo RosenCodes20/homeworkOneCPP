@@ -30,13 +30,13 @@ homeworkOne/
 Отворете терминал в директорията `library/` и изпълнете:
 
 ```bash
-g++ -std=c++17 -Wall -Wextra -O2 main.cpp -o main
+g++ -std=c++17 -Wall -Wextra -O2 main.cpp -o library
 ```
 
 След това стартирайте програмата:
 
 ```bash
-./main
+./library
 ```
 
 ## Примерен изход
