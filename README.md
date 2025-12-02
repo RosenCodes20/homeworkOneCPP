@@ -14,7 +14,7 @@
 ## Структура на проекта
 
 ```
-library/
+homeworkOne/
 ├── Author.h
 ├── Book.h
 ├── Member.h
