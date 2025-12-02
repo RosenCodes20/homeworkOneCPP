@@ -52,7 +52,7 @@ class Library {
 
             if (!isBookAvailable(isbn)) return false;
 
-            loans.emplace_back(isbn, memberId, start, due, false);
+            loans.push_back(Loan(isbn, memberId, start, due, false));
             return true;
         }
 
