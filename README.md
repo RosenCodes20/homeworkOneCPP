@@ -36,40 +36,40 @@ g++ -std=c++17 -Wall -Wextra -O2 main.cpp -o library
 ## Примерен изход
 
 ```
-Member name: Petar Petrov
-Member id: M001
-Member year joined: 2023
+Member name: Rosen Ivanov
+Member id: 1251121252
+Member year joined: 2018
 
 Has book?: 1
 
 Is book available: 1
 
-Loan created.
+Is book loaned: 1
 
-Is book available: 0
+Is book loaned: 1
 
-Book returned.
+Is book returned: 1
+Found books: 2
+Title: Harry Potter
+Author name: J.K. Rowling
+Author birth year: 1965
+Book year: 1997
+Book price: 29.990000
+Book isbn: 9780545010221
+Total Book counts 13
 
-Is book available: 1
-
-Found books by author 'Ivan Vazov': 2
-Title: Pod igoto
-Author: Ivan Vazov (1850)
-Year: 1894
-Price: 25.5
-ISBN: ISBN-001
-
-Title: Nema zemya
-Author: Ivan Vazov (1850)
-Year: 1900
-Price: 18.9
-ISBN: ISBN-002
+Title: Harry Potter Updated
+Author name: J.K. Rowling
+Author birth year: 1965
+Book year: 1998
+Book price: 35.500000
+Book isbn: 9780545010221
+Total Book counts 13
 
 Library info:
-Total books: 2
-Total members: 1
-Active loans: 0
-Total Book counts: 2
+Total books: 3
+Total members: 2
+Active loans: 1
 ```
 
 ## Класове
