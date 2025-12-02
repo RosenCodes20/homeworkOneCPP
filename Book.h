@@ -22,7 +22,12 @@ class Book{
 
         Book(const Book& other) : title(other.title), 
         author(other.author), 
-        year(other.year), price(other.price), isbn(other.isbn)  {++totalBooks;}
+        year(other.year), price(other.price), isbn(other.isbn)  {
+            ++totalBooks;
+            if (isbn.length() != 13) {
+                throw std::invalid_argument("Not right entered isbn");
+            }
+            }
 
         Book(Book&& other) noexcept
             : title(std::move(other.title)),
