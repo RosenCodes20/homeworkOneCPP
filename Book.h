@@ -18,7 +18,14 @@ class Book{
 
         Book(std::string title, 
         Author author, int year, double price, std::string isbn) 
-        : title(title), author(author), year(year), price(price), isbn(isbn) {++totalBooks;}
+        : title(title), author(author), year(year), price(price), isbn(isbn) {
+            ++totalBooks;
+            setTitle(title);
+            setAuthor(author);
+            setYear(year);
+            setPrice(price);
+            setIsbn(isbn);
+        }
 
         Book(const Book& other) : title(other.title), 
         author(other.author), 
