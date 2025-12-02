@@ -41,10 +41,11 @@ int main() {
     lib.addMember(m1);
     lib.addMember(m2);
 
-    std::cout << "\n" << "Has book?: " << lib.hasBook("9780545010221") << "\n";
-    std::cout << "\n" << "Is book available" << lib.isBookAvailable() << "\n";
-    lib.loanBook("9780545010221", "0987654321", "2024-05-01", "2024-05-20");
-    lib.loanBook("0-306-40615-2", "1251121252", "2024-05-02", "2024-05-25");
+    std::cout  << "Has book?: " << lib.hasBook("9780545010221") << "\n";
+    
+    std::cout << "\n" << "Is book available: " << lib.isBookAvailable("9780545010221") << "\n";
+    std::cout << "\n" << "Is book loaned: " << lib.loanBook("9780545010221", "0987654321", "2024-05-01", "2024-05-20") << "\n";
+    std::cout << "\n" << "Is book loaned: " << lib.loanBook("0-306-40615-2", "1251121252", "2024-05-02", "2024-05-25") << "\n";
 
     std::cout << "\nIs book returned: " << lib.returnBook("9780545010221", "0987654321") << "\n";
 
