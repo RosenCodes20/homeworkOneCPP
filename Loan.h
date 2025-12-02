@@ -17,9 +17,10 @@ class Loan {
             bool returned
         ) : isbn(isbn), memberId(memberId), 
         startDate(startDate), dueDate(dueDate), returned(returned) {
-            if (this->startDate > this->dueDate) {
-                throw std::invalid_argument("Start date cannot be after due date");
-            }
+            setIsbn(isbn);
+            setMemberId(memberId);
+            setStartDate(startDate);
+            setDueDate(dueDate);
         }
 
         std::string getIsbn() const {
