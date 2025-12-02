@@ -12,7 +12,11 @@ class Member {
         memberId("1251121252"), yearJoined(2018) {}
 
         Member(std::string name, std::string memberId, int yearJoined) :
-        name(name), memberId(memberId), yearJoined(yearJoined) {}
+        name(name), memberId(memberId), yearJoined(yearJoined) {
+            setName(name);
+            setMemberId(memberId);
+            setYearJoined(yearJoined);
+        }
 
         std::string getName() const {
             return this->name;
@@ -40,6 +44,10 @@ class Member {
             } else {
                 this->memberId = memberId;
             }
+        }
+
+        void setYearJoined(int yearJoined) {
+            this->yearJoined = yearJoined;
         }
 
         std::string to_string() const {
