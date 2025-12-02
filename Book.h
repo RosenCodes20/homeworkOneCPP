@@ -123,7 +123,7 @@ class Book{
                    "Author birth year: " + std::to_string(this->author.getBirthYear()) + "\n" +
                    "Book year: " + std::to_string(this->year) + "\n" +
                    "Book price: " + std::to_string(this->price) + "\n" +
-                   "Book isbn (length = 13 everytime): " + this->isbn + "\n" + 
+                   "Book isbn: " + this->isbn + "\n" + 
                    "Total Book counts " + std::to_string(this->totalBooks) + "\n";
         }
 
