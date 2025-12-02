@@ -86,7 +86,7 @@ Active loans: 1
 **Методи:**
 
 * `Author()` — конструктор по подразбиране
-* `Author(const std::string& name, int birthYear)` — конструктор с параметри
+* `Author(std::string name, int birthYear)` — конструктор с параметри
 * `setName()`, `getName()`
 * `setBirthYear()`, `getBirthYear()`
 * `to_string() const`
@@ -107,7 +107,7 @@ Active loans: 1
 **Методи:**
 
 * `Book()`
-* `Book(const std::string& title, const Author& author, int year, double price, const std::string& isbn)`
+* `Book(std::string title, const Author author, int year, double price, const std::string isbn)`
 * `Book(const Book&)`, `Book(Book&&)` — Rule of 5
 * `operator=`, `operator=(Book&&)`
 * `~Book()`
@@ -130,7 +130,7 @@ Active loans: 1
 **Методи:**
 
 * `Member()`
-* `Member(const std::string& name, const std::string& memberId, int yearJoined)`
+* `Member(std::string name, const std::string memberId, int yearJoined)`
 * `setName()`, `getName()`
 * `setMemberId()`, `getMemberId()`
 * `setYearJoined()`, `getYearJoined()`
@@ -150,7 +150,7 @@ Active loans: 1
 
 **Методи:**
 
-* `Loan(const std::string& isbn, const std::string& memberId, const std::string& start, const std::string& due, bool returned=false)`
+* `Loan(std::string isbn, const std::string memberId, const std::string start, const std::string due, bool returned)`
 * `markReturned()`
 * `isOverdue(const std::string& today) const`
 * `to_string() const`
